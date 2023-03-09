@@ -1,0 +1,33 @@
+
+------------------------------DATA CLEANING----------------------------------
+
+/*
+Select distinct was used to check if there was any duplicates within the dataset, after running it the amount of columns was unchanged. (no duplicates)
+
+SELECT DISTINCT *
+FROM `Capstone_Data_Analytics_Project.all_months_2022`;
+*/
+
+-----------------------------------------------------------------------------
+
+--This code was needed to select the data i wanted while getting rid of the coloumn/data that were unnecessary columns such as ride id, start/end station id, aswell as start/end lat and lng.
+
+
+
+CREATE TABLE Capstone_Data_Analytics_Project.all_months_2022_cleaned AS
+SELECT rideable_type, started_at, ended_at, start_station_name, end_station_name, member_casual, 
+       TIMESTAMP_DIFF(ended_at, started_at, MINUTE) AS ride_length
+FROM `Capstone_Data_Analytics_Project.all_months_2022`
+WHERE TIMESTAMP_DIFF(ended_at, started_at, MINUTE) > 0;
+
+
+
+
+/* 
+Tried to using the code below to remove ride length that was negative or 0 however the free version of BigQuery does not allow it. 
+
+DELETE FROM rides_data 
+WHERE ride_length <= 0;
+
+this code is to remove ride length if it is negtive or 0 (ride length should be positive)
+*/

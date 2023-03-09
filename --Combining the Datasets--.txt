@@ -1,0 +1,39 @@
+-- Combining All the datasets from the year 2022.
+
+CREATE TABLE `Capstone_Data_Analytics_Project.all_months_2022`
+AS
+SELECT *
+FROM `Capstone_Data_Analytics_Project.january_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.february_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.march_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.april_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.may_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.june_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.july_22`
+UNION ALL
+SELECT * 
+FROM `Capstone_Data_Analytics_Project.august_22`
+UNION ALL
+SELECT * 
+FROM `Capstone_Data_Analytics_Project.september_22`
+UNION ALL
+SELECT *
+FROM `Capstone_Data_Analytics_Project.october_22`
+UNION ALL 
+SELECT *
+FROM `Capstone_Data_Analytics_Project.november_22`
+UNION ALL 
+SELECT *
+FROM `Capstone_Data_Analytics_Project.december_22`;

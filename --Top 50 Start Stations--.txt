@@ -1,0 +1,15 @@
+--Top 50 Start Stations--
+
+SELECT 
+  COUNT(*) as total_rides,
+  start_station_name,
+  SUM(CASE WHEN member_casual = 'member' THEN 1 ELSE 0 END) as total_member_rides,
+  SUM(CASE WHEN member_casual = 'casual' THEN 1 ELSE 0 END) as total_casual_rides
+FROM 
+  `Capstone_Data_Analytics_Project.all_months_2022_cleaned` 
+GROUP BY 
+  start_station_name
+ORDER BY 
+  total_rides DESC
+ 
+LIMIT 50;
