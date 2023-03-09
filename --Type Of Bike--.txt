@@ -1,0 +1,12 @@
+--Type Of Bike--
+
+SELECT
+  rideable_type,
+  member_casual,
+  COUNT(*) AS total_rides
+FROM
+  `Capstone_Data_Analytics_Project.all_months_2022_cleaned`
+GROUP BY
+  rideable_type, member_casual
+ORDER BY
+  rideable_type, member_casual

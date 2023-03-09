@@ -1,0 +1,9 @@
+--Average Ride Length--
+
+SELECT 
+  member_casual, 
+  AVG(ride_length) AS avg_ride_time 
+FROM 
+  `Capstone_Data_Analytics_Project.all_months_2022_cleaned` 
+GROUP BY 
+  member_casual

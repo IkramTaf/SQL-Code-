@@ -1,0 +1,19 @@
+--Total Rides Per Month--
+
+
+SELECT
+  COUNT(*) AS total_rides,
+  FORMAT_DATE('%B', DATE(started_at)) AS month,
+  CASE
+    WHEN EXTRACT(MONTH FROM started_at) IN (12, 1, 2) THEN 'Winter'
+    WHEN EXTRACT(MONTH FROM started_at) IN (3, 4, 5) THEN 'Spring'
+    WHEN EXTRACT(MONTH FROM started_at) IN (6, 7, 8) THEN 'Summer'
+    WHEN EXTRACT(MONTH FROM started_at) IN (9, 10, 11) THEN 'Fall'
+  END AS season,
+  member_casual
+FROM
+  `Capstone_Data_Analytics_Project.all_months_2022_cleaned`
+GROUP BY
+  month, season, member_casual
+ORDER BY
+  month, season, member_casual;

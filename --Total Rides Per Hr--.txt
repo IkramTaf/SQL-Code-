@@ -1,0 +1,19 @@
+--Total Rides Per Hr--
+
+SELECT
+  EXTRACT(HOUR FROM started_at) AS hour,
+  CASE
+    WHEN EXTRACT(HOUR FROM started_at) >= 5 AND EXTRACT(HOUR FROM started_at) < 12 THEN 'Morning'
+    WHEN EXTRACT(HOUR FROM started_at) >= 12 AND EXTRACT(HOUR FROM started_at) < 17 THEN 'Afternoon'
+    WHEN EXTRACT(HOUR FROM started_at) >= 17 AND EXTRACT(HOUR FROM started_at) < 21 THEN 'Evening'
+    ELSE 'Night'
+  END AS time_of_day,
+  SUM(CASE WHEN member_casual = 'member' THEN 1 ELSE 0 END) AS member_rides,
+  SUM(CASE WHEN member_casual = 'casual' THEN 1 ELSE 0 END) AS casual_rides,
+  COUNT(*) AS total_rides
+FROM
+  `Capstone_Data_Analytics_Project.all_months_2022_cleaned`
+GROUP BY
+  hour, time_of_day
+ORDER BY
+  hour, time_of_day;
